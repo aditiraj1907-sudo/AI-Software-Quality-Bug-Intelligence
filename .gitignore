@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# Generated at run time
+database/*.db
+ml/models/*.joblib
+ml/models/metrics.json

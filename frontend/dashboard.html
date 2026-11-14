@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Monitor detected issues by severity, category and file, with a project quality score.">
+<title>Dashboard · Quality &amp; Bug Intelligence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><i aria-hidden="true"></i>Quality &amp; Bug Intelligence</a>
+  <nav class="nav" aria-label="Main"><a href="analyzer.html">Analyzer</a><a href="dashboard.html" aria-current="page">Dashboard</a><a href="predictor.html">Severity predictor</a><a href="report.html">Report</a><a href="how-it-works.html">How it works</a></nav>
+</header>
+<main>
+<div class="sec-head">
+  <h1>Issue dashboard</h1>
+  <p>Every file in the project in one place, read from the database. It starts with a five-file sample project. Add your own code from the <a href="analyzer.html">Analyzer</a> with “Add to dashboard”.</p>
+</div>
+<div id="dash-empty" class="empty" hidden>No files in the project. <button class="btn small" id="btn-reset-empty" type="button">Restore sample project</button></div>
+<div id="dash-body">
+  <div class="metrics" id="dash-metrics"></div>
+  <div class="charts">
+    <div class="card"><h3>Issues by severity</h3><div id="dash-sev"></div></div>
+    <div class="card"><h3>Issues by category</h3><div id="dash-cat"></div></div>
+    <div class="card"><h3>Project quality over time</h3><div id="dash-trend"></div><p class="sub" style="margin-top:6px">Quality score after each change to the project, from the scan history in the database.</p></div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div class="toolbar"><h3 style="margin:0">Files</h3><span class="grow"></span><button class="btn small" id="btn-reset" type="button">Restore sample project</button></div>
+    <div class="tw"><table id="dash-files"></table></div>
+  </div>
+  <div class="filters">
+    <h3 style="font-size:16px;margin-right:8px">Issues</h3>
+    <select id="flt-sev" aria-label="Filter by severity"><option value="">All severities</option></select>
+    <select id="flt-cat" aria-label="Filter by category"><option value="">All categories</option></select>
+    <select id="flt-file" aria-label="Filter by file"><option value="">All files</option></select>
+    <span class="sub" id="dash-count"></span>
+  </div>
+  <ul class="flist" id="dash-list"></ul>
+</div>
+</main>
+<footer>Quality &amp; Bug Intelligence · automated analysis, bug classification, severity prediction and reporting.</footer>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pages/dashboard.js"></script>
+</body>
+</html>

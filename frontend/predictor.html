@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Predict how severe a bug is and what category it belongs to from a plain-language description.">
+<title>Severity predictor · Quality &amp; Bug Intelligence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><i aria-hidden="true"></i>Quality &amp; Bug Intelligence</a>
+  <nav class="nav" aria-label="Main"><a href="analyzer.html">Analyzer</a><a href="dashboard.html">Dashboard</a><a href="predictor.html" aria-current="page">Severity predictor</a><a href="report.html">Report</a><a href="how-it-works.html">How it works</a></nav>
+</header>
+<main>
+<div class="sec-head">
+  <h1>Severity predictor</h1>
+  <p>Describe a bug in plain words. Two machine-learning models read the text and predict how severe it is and which category it belongs to. The result also shows which words drove the call.</p>
+</div>
+<div class="two">
+  <div class="card">
+    <label class="label" for="triage-input">Bug report</label>
+    <textarea id="triage-input" style="min-height:120px;margin-top:8px" spellcheck="true" placeholder="For example: payment is charged twice when the user taps Pay quickly"></textarea>
+    <div class="chips" id="triage-chips">
+      <button class="chip" type="button" data-text="Checkout crashes with a null pointer when the customer profile is missing">Checkout crash</button>
+      <button class="chip" type="button" data-text="Typo in the tooltip on the settings page">Tooltip typo</button>
+      <button class="chip" type="button" data-text="Admin login can be bypassed with an empty password, exposing all customer data">Login bypass</button>
+    </div>
+    <div class="toolbar" style="margin:12px 0 0"><button class="btn primary" id="btn-triage" type="button">Predict severity</button></div>
+    <p class="sub" id="model-info" style="margin-top:10px"></p>
+  </div>
+  <div class="card" id="triage-out" aria-live="polite"></div>
+</div>
+</main>
+<footer>Quality &amp; Bug Intelligence · automated analysis, bug classification, severity prediction and reporting.</footer>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pages/predictor.js"></script>
+</body>
+</html>

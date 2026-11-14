@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The five analysis stages, every detection rule, and how well the models score.">
+<title>How it works · Quality &amp; Bug Intelligence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><i aria-hidden="true"></i>Quality &amp; Bug Intelligence</a>
+  <nav class="nav" aria-label="Main"><a href="analyzer.html">Analyzer</a><a href="dashboard.html">Dashboard</a><a href="predictor.html">Severity predictor</a><a href="report.html">Report</a><a href="how-it-works.html" aria-current="page">How it works</a></nav>
+</header>
+<main>
+<div class="sec-head">
+  <h1>How it works</h1>
+  <p>Five stages run in order on every scan.</p>
+</div>
+<ol class="steps">
+  <li><b>1. Parse</b><span>Strips strings and comments, then maps functions and blocks so rules see real code.</span></li>
+  <li><b>2. Detect</b><span><span id="n-rules">27</span> rules for JavaScript and Python find common errors and quality issues.</span></li>
+  <li><b>3. Classify</b><span>Each finding is filed under Security, Logic, Error handling, Performance, Resource management, Code quality or Maintainability.</span></li>
+  <li><b>4. Predict</b><span>A scikit-learn model blended with each rule’s default severity estimates severity and a 0–100 risk score.</span></li>
+  <li><b>5. Explain &amp; report</b><span>Every finding gets a reason and a fix. Results are stored in SQLite and summarized in the dashboard and report.</span></li>
+</ol>
+<div class="card" style="margin-top:24px">
+  <h3>Detection rules</h3>
+  <p class="sub" style="margin-bottom:10px">“Default” is the severity a rule starts with. “Model” is what the severity model predicts after blending, with its confidence.</p>
+  <div class="tw"><table><thead><tr><th>Rule</th><th>Language</th><th>Category</th><th>Default</th><th>Model</th></tr></thead><tbody id="rules-body"></tbody></table></div>
+</div>
+<div class="card">
+  <h3>Machine-learning models</h3>
+  <div id="model-card"><p class="sub">Loading model details…</p></div>
+</div>
+<p class="note">Detection is pattern-based, so it can miss bugs and can flag code that is fine. The severity model learned from <span id="n-train">100</span> labelled bug reports, which is a small set. Explanations come from a built-in text for each rule. A production version would use a real parser, a much larger labelled bug history, and a language model for explanations.</p>
+</main>
+<footer>Quality &amp; Bug Intelligence · automated analysis, bug classification, severity prediction and reporting.</footer>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pages/how-it-works.js"></script>
+</body>
+</html>

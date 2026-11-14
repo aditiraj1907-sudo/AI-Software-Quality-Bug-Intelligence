@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Scan code, classify bugs, predict severity, and get a quality report.">
+<title>Quality &amp; Bug Intelligence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><i aria-hidden="true"></i>Quality &amp; Bug Intelligence</a>
+  <nav class="nav" aria-label="Main"><a href="analyzer.html">Analyzer</a><a href="dashboard.html">Dashboard</a><a href="predictor.html">Severity predictor</a><a href="report.html">Report</a><a href="how-it-works.html">How it works</a></nav>
+</header>
+<main>
+<div class="hero">
+  <div>
+    <h1>Know which bug to fix first.</h1>
+    <p class="lede">Scan source code, classify every issue, predict how severe it is, and get an explanation with a fix to start from.</p>
+    <div class="cta">
+      <a class="btn primary" href="analyzer.html">Analyze code</a>
+      <a class="btn" href="dashboard.html">Open dashboard</a>
+    </div>
+  </div>
+  <div class="peek" aria-label="Example of flagged lines">
+    <div class="peek-bar"><span>checkout.js</span><span>3 of 11 issues shown</span></div>
+    <div class="peek-body">
+      <div class="pl"><span class="n">3</span><span>function renderComment(el, userComment) {</span><span></span></div>
+      <div class="pl flag sev-high"><span class="n">4</span><span>  el.innerHTML = userComment;</span><span class="pill sev-high">High · Security</span></div>
+      <div class="pl"><span class="n">7</span><span>function runDiscount(code) {</span><span></span></div>
+      <div class="pl flag sev-critical"><span class="n">8</span><span>  return eval("applyDiscount('" + code + "')");</span><span class="pill sev-critical">Critical · Security</span></div>
+      <div class="pl"><span class="n">12</span><span>  var total = 0;</span><span></span></div>
+      <div class="pl flag sev-high"><span class="n">13</span><span>  for (var i = 0; i &lt;= items.length; i++) {</span><span class="pill sev-high">High · Logic</span></div>
+    </div>
+  </div>
+</div>
+<div class="fcards">
+  <a class="fcard" href="analyzer.html"><h2>Code analyzer</h2><p>Paste JavaScript or Python and see every issue with its category, predicted severity and a suggested fix.</p><span class="go">Open the analyzer</span></a>
+  <a class="fcard" href="dashboard.html"><h2>Issue dashboard</h2><p>Track issues across files by severity and category, with a quality score and trend stored in the database.</p><span class="go">Open the dashboard</span></a>
+  <a class="fcard" href="predictor.html"><h2>Severity predictor</h2><p>Describe a bug in plain words and get a predicted severity and category from a trained model.</p><span class="go">Try the predictor</span></a>
+  <a class="fcard" href="report.html"><h2>Quality report</h2><p>A summary of scores, highest-risk issues and recommendations that you can copy as Markdown.</p><span class="go">View the report</span></a>
+  <a class="fcard" href="how-it-works.html"><h2>How it works</h2><p>The five stages, every detection rule, and how well the models score on held-out data.</p><span class="go">See how it works</span></a>
+</div>
+</main>
+<footer>Quality &amp; Bug Intelligence · automated analysis, bug classification, severity prediction and reporting.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Paste JavaScript or Python code and get classified, severity-ranked findings with fixes.">
+<title>Analyzer · Quality &amp; Bug Intelligence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html"><i aria-hidden="true"></i>Quality &amp; Bug Intelligence</a>
+  <nav class="nav" aria-label="Main"><a href="analyzer.html" aria-current="page">Analyzer</a><a href="dashboard.html">Dashboard</a><a href="predictor.html">Severity predictor</a><a href="report.html">Report</a><a href="how-it-works.html">How it works</a></nav>
+</header>
+<main>
+<div class="sec-head">
+  <h1>Code analyzer</h1>
+  <p>Paste JavaScript or Python, press Analyze, and read the findings. Each one has a category, a predicted severity, an explanation and a suggested fix. A sample is loaded to start: press Clear to paste your own code.</p>
+</div>
+<div class="two">
+  <div class="card">
+    <div class="toolbar">
+      <label class="label" for="lang-select">Language</label>
+      <select id="lang-select"><option value="auto">Auto-detect</option><option value="js">JavaScript</option><option value="py">Python</option></select>
+      <span class="grow"></span>
+      <button class="btn small" id="btn-sample-js" type="button">JS sample</button>
+      <button class="btn small" id="btn-sample-py" type="button">Python sample</button>
+      <button class="btn small" id="btn-clear" type="button">Clear</button>
+    </div>
+    <textarea id="code-input" spellcheck="false" aria-label="Source code to analyze" placeholder="Paste your own JavaScript or Python code here, then press Analyze."></textarea>
+    <div class="toolbar" style="margin:12px 0 0">
+      <button class="btn primary" id="btn-analyze" type="button">Analyze</button>
+      <button class="btn" id="btn-add-dash" type="button">Add to dashboard</button>
+    </div>
+    <p class="sub" id="added-note" style="margin-top:8px" hidden></p>
+  </div>
+  <div class="card" id="an-summary" aria-live="polite"></div>
+</div>
+<div class="stack" style="margin-top:18px">
+  <div class="card"><h3>Annotated code</h3><div class="code" id="an-annotated" tabindex="0" aria-label="Annotated source code"></div></div>
+  <div>
+    <div class="toolbar"><h3 style="font-size:16px" id="an-count">Findings</h3></div>
+    <ul class="flist" id="an-findings"></ul>
+  </div>
+</div>
+</main>
+<footer>Quality &amp; Bug Intelligence · automated analysis, bug classification, severity prediction and reporting.</footer>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pages/analyzer.js"></script>
+</body>
+</html>

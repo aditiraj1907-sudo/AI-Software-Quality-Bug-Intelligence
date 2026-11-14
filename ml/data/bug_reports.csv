@@ -1,0 +1,102 @@
+text,category,severity
+remote code execution through eval of user supplied input,Security,critical
+sql injection lets an attacker read the users table,Security,critical
+hardcoded database password committed to the repository,Security,critical
+authentication bypass lets anyone log in as admin,Security,critical
+private api key exposed in the client bundle,Security,critical
+shell command injection through the filename parameter,Security,critical
+unsafe deserialization executes arbitrary commands from untrusted data,Security,critical
+password stored in plain text in the database,Security,critical
+admin endpoint has no authentication and exposes customer records,Security,critical
+path traversal allows reading any file on the server,Security,critical
+cross site scripting through innerHTML with a user comment,Security,high
+session token sent over http without encryption,Security,high
+missing csrf protection on the account settings form,Security,high
+weak md5 hashing used for passwords,Security,high
+open redirect sends users to attacker sites after login,Security,high
+cors configured to allow every origin with credentials,Security,high
+user can view other users orders by changing the id in the url,Security,high
+missing rate limit on the login endpoint,Security,medium
+verbose error page reveals stack traces to visitors,Security,medium
+cookies set without the secure flag,Security,medium
+outdated library with a known low risk vulnerability,Security,medium
+security headers missing on static pages,Security,low
+debug mode flag left enabled on the staging site,Security,low
+payment is charged twice when the user double clicks pay,Logic,critical
+wrong balance calculation loses customer money,Logic,critical
+order total ignores the discount and overcharges every customer,Logic,critical
+data corrupted when two requests update the same record at once,Logic,critical
+off by one error skips the last record in the billing export,Logic,high
+assignment used instead of comparison in the access check,Logic,high
+wrong tax calculation for large orders,Logic,high
+race condition produces duplicate orders under heavy load,Logic,high
+mutable default argument shares state between requests,Logic,high
+infinite loop hangs the worker when the input list is empty,Logic,high
+loop condition reads one element past the end of the array,Logic,high
+comparison with the wrong operator lets expired coupons work,Logic,high
+date calculation breaks on the last day of the month,Logic,high
+rounding error of one cent in the invoice total,Logic,medium
+sorting order wrong for names with accents,Logic,medium
+pagination shows the same item on two pages,Logic,medium
+timezone conversion off by one hour in reports,Logic,medium
+tooltip shows the wrong plural for one item,Logic,low
+list shows items in a slightly unexpected order,Logic,low
+crash on startup when the config file is missing,Error handling,critical
+unhandled exception kills the whole server process,Error handling,critical
+null pointer exception when the customer profile is missing crashes checkout,Error handling,high
+unhandled promise rejection stops the background sync,Error handling,high
+failed database save is reported to the user as success,Error handling,high
+program crashes with a value error when the user types letters instead of a number,Error handling,high
+missing null check on the response crashes the mobile app,Error handling,high
+empty catch block hides errors and makes failures hard to diagnose,Error handling,medium
+bare except swallows keyboard interrupt and real errors,Error handling,medium
+exception caught and ignored so nobody knows the save failed,Error handling,medium
+missing input validation accepts a negative quantity,Error handling,medium
+retry logic missing after a temporary network timeout,Error handling,medium
+error message returned by the api is vague and has no code,Error handling,medium
+invalid user input is not checked before conversion,Error handling,medium
+error message text has a spelling mistake,Error handling,low
+warning logged at the wrong level,Error handling,low
+query inside a loop makes the report page time out,Performance,high
+memory grows without limit and the service runs out of memory,Performance,high
+requests run one after another in a loop causing noticeable latency,Performance,medium
+full table scan on every page load of the dashboard,Performance,medium
+large file read into memory all at once,Performance,medium
+repeated string concatenation in a loop slows the export,Performance,medium
+missing database index makes the search slow,Performance,medium
+same api response fetched again for every row,Performance,medium
+image slightly larger than needed on the home page,Performance,low
+unneeded copy of a small list on every call,Performance,low
+database connections are never released and the pool is exhausted,Resource management,high
+file handles pile up until the process cannot open any file,Resource management,high
+file handle not closed on the error path leaks resources slowly,Resource management,medium
+network socket left open after the request finishes,Resource management,medium
+temporary files are never deleted from the disk,Resource management,medium
+thread started without a way to stop it,Resource management,medium
+unused connection object kept alive a little longer than needed,Resource management,low
+console log left in production code,Code quality,low
+variable declared with var instead of let,Code quality,low
+loose equality used where strict equality is clearer,Code quality,low
+print statement used for debugging,Code quality,low
+parseint without radix can give surprising results,Code quality,low
+wildcard import pulls every name into the module,Code quality,low
+inconsistent naming style for variables,Code quality,low
+unused import increases the bundle slightly,Code quality,low
+comparison to none with double equals instead of is none,Code quality,low
+magic number used instead of a named constant,Code quality,low
+commented out code left in the file,Code quality,low
+inconsistent indentation between files,Code quality,low
+duplicate code in two handlers risks diverging behavior,Code quality,medium
+very generic variable names make the code hard to follow,Code quality,medium
+boolean flag arguments make the function calls unclear,Code quality,medium
+deeply nested conditions make the function hard to test,Maintainability,medium
+function is very long and does several unrelated things,Maintainability,medium
+class has too many responsibilities and is hard to change,Maintainability,medium
+no tests cover the payment module,Maintainability,medium
+circular dependency between two modules,Maintainability,medium
+large file mixes ui code and business rules,Maintainability,medium
+todo comment left in a helper function,Maintainability,low
+missing docstring on a public function,Maintainability,low
+outdated comment no longer matches the code,Maintainability,low
+readme setup steps are out of date,Maintainability,low
+fixme note left after the workaround,Maintainability,low
