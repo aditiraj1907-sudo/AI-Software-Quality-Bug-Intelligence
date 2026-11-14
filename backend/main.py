@@ -1,12 +1,14 @@
+
 """FastAPI application.
 
 Run from the project root:
 
     uvicorn backend.main:app --reload
 
-then open http://127.0.0.1:8000. The same server serves the API under /api
-and the web pages from the frontend/ folder.
+Then open http://127.0.0.1:8000.
+The same server serves the API under /api and the web pages from frontend/.
 """
+
 from __future__ import annotations
 
 import os
@@ -31,23 +33,41 @@ FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     db.init_db()
-    get_model()  # loads the saved models, or trains them on first run
+    get_model()
     service.ensure_seeded()
     yield
 
 
-app = FastAPI(title="Quality & Bug Intelligence", version="1.0.0", lifespan=lifespan)
+app = FastAPI(
+    title="Quality & Bug Intelligence",
+    version="1.0.0",
+    lifespan=lifespan
+)
 
-# Only needed if the frontend is hosted somewhere else (for example GitHub Pages).
+# Only needed if the frontend is hosted somewhere else.
 # Set QBI_CORS to a comma-separated list of allowed origins.
-_origins = [o.strip() for o in os.environ.get("QBI_CORS", "").split(",") if o.strip()]
+_origins = [
+    o.strip()
+    for o in os.environ.get("QBI_CORS", "").split(",")
+    if o.strip()
+]
+
 if _origins:
-    app.add_middleware(CORSMiddleware, allow_origins=_origins, allow_methods=["*"], allow_headers=["*"])
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=_origins,
+        allow_methods=["*"],
+        allow_headers=["*"]
+    )
 
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "rules": len(RULES), "modelSamples": get_model().metrics["samples"]}
+    return {
+        "status": "ok",
+        "rules": len(RULES),
+        "modelSamples": get_model().metrics["samples"]
+    }
 
 
 @app.get("/api/samples")
@@ -58,7 +78,11 @@ def samples():
 @app.post("/api/analyze")
 def analyze_code(req: AnalyzeRequest):
     """Analyze code without saving it."""
-    return service.analyze_code(req.code, req.language, req.filename)
+    return service.analyze_code(
+        req.code,
+        req.language,
+        req.filename
+    )
 
 
 @app.get("/api/project")
@@ -68,14 +92,21 @@ def project():
 
 @app.post("/api/project/files", status_code=201)
 def add_file(req: AddFileRequest):
-    """Analyze code and add it to the project (saved in the database)."""
-    return service.add_file(req.code, req.language, req.filename)
+    """Analyze code and add it to the project."""
+    return service.add_file(
+        req.code,
+        req.language,
+        req.filename
+    )
 
 
 @app.delete("/api/project/files/{file_id}")
 def remove_file(file_id: int):
     if not service.remove_file(file_id):
-        raise HTTPException(status_code=404, detail="That file is not in the project.")
+        raise HTTPException(
+            status_code=404,
+            detail="That file is not in the project."
+        )
     return {"deleted": file_id}
 
 
@@ -86,8 +117,14 @@ def reset_project():
 
 
 @app.get("/api/findings")
-def findings(severity: Optional[str] = Query(None, pattern="^(critical|high|medium|low)$"),
-             category: Optional[str] = None, file: Optional[str] = None):
+def findings(
+    severity: Optional[str] = Query(
+        None,
+        pattern="^(critical|high|medium|low)$"
+    ),
+    category: Optional[str] = None,
+    file: Optional[str] = None
+):
     return service.findings(severity, category, file)
 
 
@@ -113,4 +150,8 @@ def model_info():
 
 
 if FRONTEND_DIR.exists():
-    app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
+    app.mount(
+        "/",
+        StaticFiles(directory=FRONTEND_DIR, html=True),
+        name="frontend"
+    )
